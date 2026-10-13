@@ -1,0 +1,89 @@
+name: انتشار خودکار سایت + ایجنت سئو
+
+on:
+  schedule:
+    - cron: '0 4 * * *'      # هر روز ۰۷:۳۰ تهران
+  push:
+    branches: [ main, master ]
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: publish
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: دریافت کد
+        uses: actions/checkout@v4
+
+      - name: نصب Dart
+        uses: dart-lang/setup-dart@v1
+
+      - name: اجرای ایجنت سئو
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_BASE_URL: ${{ secrets.OPENAI_BASE_URL }}
+          OPENAI_MODEL: ${{ secrets.OPENAI_MODEL }}
+          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+          SERPAPI_KEY: ${{ secrets.SERPAPI_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: dart run agent/seo_agent.dart run
+
+      - name: ذخیرهٔ تغییرات
+        run: |
+          git config user.name "seo-agent"
+          git config user.email "seo-agent@users.noreply.github.com"
+          git add -A
+          git commit -m "chore(seo): اجرای خودکار $(date -u +%F)" || echo "تغییری نبود"
+          git push || echo "push انجام نشد"
+
+      - name: آماده‌سازی برای GitHub Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+  deploy-pages:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
+
+  # --- آینهٔ اختیاری: Cloudflare Pages (برای سرعت بیشتر در ایران) ---
+  deploy-cloudflare:
+    needs: build
+    if: vars.ENABLE_CLOUDFLARE == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy . --project-name=azmoon-yar
+
+  # --- آینهٔ اختیاری: Netlify ---
+  deploy-netlify:
+    needs: build
+    if: vars.ENABLE_NETLIFY == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: nwtgck/actions-netlify@v3.0
+        with:
+          publish-dir: '.'
+          production-deploy: true
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}

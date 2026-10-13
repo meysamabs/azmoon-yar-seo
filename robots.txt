@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /agent/
+Disallow: /*.dart$
+
+Sitemap: https://meysamabs.github.io/azmoon-yar-seo/sitemap.xml

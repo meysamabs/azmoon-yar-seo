@@ -1,0 +1,35 @@
+{
+  "site": {
+    "domain": "https://example.ir",
+    "brand": "آزمون یار",
+    "site_dir": ".",
+    "blog_dir": "blog"
+  },
+  "app": {
+    "package": "com.driver_azmon",
+    "myket": "https://myket.ir/app/com.driver_azmon",
+    "bazaar": "",
+    "developer": "اندروید پلاس"
+  },
+  "llm": {
+    "enabled": true,
+    "base_url": "https://api.openai.com/v1",
+    "model": "gpt-4o-mini"
+  },
+  "tasks": {
+    "generate": true,
+    "build": true,
+    "audit": true,
+    "index": true,
+    "rank": true,
+    "social": false,
+    "outreach": true,
+    "report": true
+  },
+  "limits": {
+    "articles_per_run": 1,
+    "outreach_per_run": 3
+  },
+  "dry_run": true,
+  "auto_publish": false
+}
