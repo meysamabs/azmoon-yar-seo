@@ -270,6 +270,34 @@ String articleHtml(Agent a, Map<String, dynamic> art, String body, {required boo
     'publisher': {'@type': 'Organization', 'name': a.site.brand},
   });
 
+  final icon =
+      'https://myket.ir/app-icon/8e05c29f-17bb-48fa-af7e-31900859fef7.png';
+
+  // مطالب مرتبط (لینک داخلی برای سئو) — همه در همان پوشهٔ blog قرار دارند.
+  // توجه: در زمان تولید، وضعیت بقیهٔ مقاله‌ها ممکن است هنوز «todo» باشد،
+  // پس مقاله‌ای که فایل محتوای دست‌نویس دارد هم منتشرشده در نظر گرفته می‌شود.
+  final allArts = (loadKeywords()['articles'] as List)
+      .cast<dynamic>()
+      .map((e) => (e as Map).cast<String, dynamic>())
+      .where((x) => x['slug']?.toString() != slug)
+      .where((x) =>
+          x['status'] == 'published' ||
+          File('$_agentDir/content/${x['slug']}.html').existsSync())
+      .take(3)
+      .toList();
+  final related = allArts.isEmpty
+      ? ''
+      : '''
+    <section class="related">
+      <h2>مطالب مرتبط</h2>
+      <div class="grid">
+${allArts.map((x) => '''        <a class="card" href="${x['slug']}.html">
+          <h3>${htmlEscape(x['title']?.toString() ?? x['keyword'].toString())}</h3>
+          <span class="post-more">ادامهٔ مطلب ←</span>
+        </a>''').join('\n')}
+      </div>
+    </section>''';
+
   return '''<!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
@@ -279,43 +307,67 @@ String articleHtml(Agent a, Map<String, dynamic> art, String body, {required boo
   <meta name="description" content="${htmlEscape(desc)}" />
   <link rel="canonical" href="$url" />
   <meta name="robots" content="${published ? 'index, follow' : 'noindex, follow'}" />
+  <meta name="theme-color" content="#1e3a8a" />
+  <link rel="icon" href="$icon" />
   <meta property="og:type" content="article" />
   <meta property="og:locale" content="fa_IR" />
   <meta property="og:title" content="${htmlEscape(title)}" />
   <meta property="og:description" content="${htmlEscape(desc)}" />
   <meta property="og:url" content="$url" />
+  <meta property="og:image" content="$icon" />
   <script type="application/ld+json">
 $jsonLd
   </script>
-  <style>
-    body{font-family:Vazirmatn,Tahoma,sans-serif;line-height:2;max-width:820px;
-      margin:0 auto;padding:24px 18px;color:#1e293b;background:#f8fafc}
-    h1,h2,h3{line-height:1.6}
-    h1{font-size:1.7rem} h2{font-size:1.3rem;margin-top:1.6em;color:#0f172a}
-    a{color:#0369a1}
-    .cta{background:#fff7ed;border:1px solid #fdba74;border-radius:14px;padding:18px;margin:28px 0}
-    .cta a{display:inline-block;margin:6px 6px 0 0;background:#f59e0b;color:#231400;
-      text-decoration:none;padding:10px 18px;border-radius:10px;font-weight:700}
-    .cta a.alt{background:#38bdf8;color:#07131f}
-    footer{margin-top:40px;color:#64748b;font-size:.9rem;border-top:1px solid #e2e8f0;padding-top:14px}
-  </style>
+  <link rel="stylesheet" href="../assets/site.css" />
 </head>
 <body>
-  <p><a href="/">« ${htmlEscape(a.site.brand)}</a></p>
-  <h1>${htmlEscape(title)}</h1>
-  <article>
+
+  <header class="topbar">
+    <div class="wrap inner">
+      <a class="brand" href="../">
+        <img src="$icon" alt="لوگوی ${htmlEscape(a.site.brand)}" width="38" height="38" />
+        <span>${htmlEscape(a.site.brand)}</span>
+      </a>
+      <nav class="topnav">
+        <a href="../#articles">مقالات</a>
+        ${myket.isEmpty ? '' : '<a class="topnav-cta" href="$myket" target="_blank" rel="noopener">دانلود رایگان</a>'}
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="article-head">
+      <div class="wrap">
+        <div class="breadcrumb">
+          <a href="../">${htmlEscape(a.site.brand)}</a> ›
+          <a href="../#articles">مقالات آموزشی</a>
+        </div>
+        <h1>${htmlEscape(title)}</h1>
+        <p class="lead">${htmlEscape(desc)}</p>
+      </div>
+    </div>
+
+    <div class="wrap">
+      <article class="article-body">
 $body
-  </article>
+      </article>
 
-  <div class="cta">
-    <strong>دانلود اپلیکیشن ${htmlEscape(a.site.brand)}</strong>
-    <p>آزمون‌های تمرینی و سوالات به‌روز، رایگان و آفلاین.</p>
-    ${myket.isEmpty ? '' : '<a href="$myket" rel="noopener">دریافت از مایکت</a>'}
-    ${bazaar.isEmpty ? '' : '<a class="alt" href="$bazaar" rel="noopener">دریافت از کافه‌بازار</a>'}
-  </div>
+      <div class="dl-card">
+        <h3>آماده‌ای تمرین کنی؟</h3>
+        <p>اپلیکیشن ${htmlEscape(a.site.brand)} رایگان است و آفلاین کار می‌کند: آزمون‌های ۳۰ سوالی، سوالات فنی، تابلوها و کارنامهٔ پیشرفت.</p>
+        <div class="btns">
+          ${myket.isEmpty ? '' : '<a class="btn btn-myket" href="$myket" rel="noopener">دریافت از مایکت</a>'}
+          ${bazaar.isEmpty ? '' : '<a class="btn btn-bazaar" href="$bazaar" rel="noopener">دریافت از کافه‌بازار</a>'}
+        </div>
+      </div>
+$related
+    </div>
+  </main>
 
-  <footer>
-    <p>${htmlEscape(a.site.brand)} · سازنده: ${htmlEscape(a.app.developer)}</p>
+  <footer class="site">
+    <div class="wrap copy">
+      <p>${htmlEscape(a.site.brand)} · سازنده: ${htmlEscape(a.app.developer)}</p>
+    </div>
   </footer>
 </body>
 </html>

@@ -5,18 +5,41 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>صفحه پیدا نشد | آزمون یار</title>
   <meta name="robots" content="noindex" />
+  <meta name="theme-color" content="#1e3a8a" />
+  <link rel="icon" href="https://myket.ir/app-icon/8e05c29f-17bb-48fa-af7e-31900859fef7.png" />
+  <link rel="stylesheet" href="assets/site.css" />
   <style>
-    body{font-family:Vazirmatn,Tahoma,sans-serif;background:#0f172a;color:#f1f5f9;
-      display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;text-align:center}
-    a{color:#f59e0b;text-decoration:none;font-weight:700}
-    h1{font-size:3rem;margin:0 0 8px}
+    .notfound {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 40px 20px;
+    }
+    .notfound .code {
+      font-size: clamp(4rem, 16vw, 8rem);
+      font-weight: 800;
+      line-height: 1;
+      background: linear-gradient(120deg, var(--brand-2), var(--accent));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 8px;
+    }
+    .notfound p { color: var(--muted); }
   </style>
 </head>
 <body>
-  <div>
-    <h1>۴۰۴</h1>
-    <p>این صفحه وجود ندارد.</p>
-    <p><a href="/">بازگشت به صفحهی اصلی آزمون یار</a></p>
-  </div>
+  <main class="notfound">
+    <div>
+      <div class="code">۴۰۴</div>
+      <h1>این صفحه پیدا نشد</h1>
+      <p>ممکن است آدرس تغییر کرده باشد یا اشتباه تایپ شده باشد.</p>
+      <div class="btns" style="justify-content:center;margin-top:18px">
+        <a class="btn btn-myket" href="./">بازگشت به صفحهٔ اصلی</a>
+        <a class="btn btn-ghost" href="./#articles">مشاهدهٔ مقالات آموزشی</a>
+      </div>
+    </div>
+  </main>
 </body>
 </html>

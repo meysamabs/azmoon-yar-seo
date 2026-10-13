@@ -10,6 +10,8 @@
   <meta name="keywords" content="آزمون آیین نامه, آزمون آیین نامه رانندگی, سوالات آیین نامه, آزمون فنی آیین نامه, تابلوهای راهنمایی و رانندگی, قبولی آیین نامه, آزمون یار" />
   <link rel="canonical" href="https://meysamabs.github.io/azmoon-yar-seo/" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="theme-color" content="#1e3a8a" />
+  <link rel="icon" href="https://myket.ir/app-icon/8e05c29f-17bb-48fa-af7e-31900859fef7.png" />
 
   <!-- ===== Open Graph ===== -->
   <meta property="og:type" content="website" />
@@ -72,188 +74,236 @@
   }
   </script>
 
-  <style>
-    :root{
-      --bg:#0f172a; --card:#1e293b; --accent:#f59e0b; --accent2:#38bdf8;
-      --text:#f1f5f9; --muted:#94a3b8;
-    }
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{
-      font-family:Vazirmatn,Tahoma,"Segoe UI",sans-serif;
-      background:linear-gradient(160deg,#0f172a,#1e293b 60%,#0b1220);
-      color:var(--text); line-height:1.9; font-size:17px;
-    }
-    .wrap{max-width:1000px;margin:0 auto;padding:0 20px}
-    header{padding:22px 0}
-    header .wrap{display:flex;align-items:center;gap:12px;font-weight:700}
-    header img{width:44px;height:44px;border-radius:12px}
-    .hero{padding:40px 0 30px;text-align:center}
-    .hero h1{font-size:2rem;line-height:1.5;margin-bottom:14px}
-    .hero h1 span{color:var(--accent)}
-    .hero p.lead{color:var(--muted);max-width:640px;margin:0 auto 26px}
-    .badges{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:26px;color:var(--muted);font-size:.9rem}
-    .badges b{color:var(--accent)}
-    .btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-    .btn{
-      display:inline-flex;align-items:center;gap:10px;text-decoration:none;
-      padding:14px 26px;border-radius:14px;font-weight:700;font-size:1rem;
-      transition:transform .15s ease;
-    }
-    .btn:hover{transform:translateY(-2px)}
-    .btn-myket{background:linear-gradient(135deg,#38bdf8,#0ea5e9);color:#04121f}
-    .btn-bazaar{background:linear-gradient(135deg,#f59e0b,#f97316);color:#2a1500}
-    .btn-ghost{background:transparent;border:1px solid #334155;color:var(--text)}
-    section{padding:34px 0}
-    h2{font-size:1.4rem;margin-bottom:16px}
-    h2::after{content:"";display:block;width:56px;height:3px;background:var(--accent);border-radius:3px;margin-top:8px}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:20px}
-    .card{background:rgba(30,41,59,.7);border:1px solid #26364f;border-radius:16px;padding:18px 20px}
-    .card h3{font-size:1.05rem;margin-bottom:8px;color:var(--accent2)}
-    .card p{color:var(--muted);font-size:.95rem}
-    a.post{text-decoration:none;color:inherit;display:block;transition:border-color .2s,transform .2s}
-    a.post:hover{border-color:var(--accent);transform:translateY(-2px)}
-    .shots{display:flex;gap:14px;overflow-x:auto;padding:8px 0;margin-top:18px}
-    .shots img{width:220px;border-radius:16px;border:1px solid #26364f;flex:0 0 auto}
-    .faq details{background:rgba(30,41,59,.7);border:1px solid #26364f;border-radius:14px;padding:14px 18px;margin-bottom:12px}
-    .faq summary{cursor:pointer;font-weight:700}
-    .faq p{color:var(--muted);margin-top:8px}
-    .cta{text-align:center;background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.35);border-radius:20px;padding:30px 20px;margin:20px 0}
-    footer{border-top:1px solid #1e293b;padding:26px 0;color:var(--muted);font-size:.9rem;text-align:center}
-    footer a{color:var(--accent2)}
-  </style>
+  <link rel="stylesheet" href="assets/site.css" />
 </head>
 <body>
 
-  <header class="wrap">
-    <img src="https://myket.ir/app-icon/8e05c29f-17bb-48fa-af7e-31900859fef7.png" alt="لوگوی اپ آزمون یار" />
-    <span>آزمون یار</span>
+  <header class="topbar">
+    <div class="wrap inner">
+      <a class="brand" href="./">
+        <img src="https://myket.ir/app-icon/8e05c29f-17bb-48fa-af7e-31900859fef7.png" alt="لوگوی اپ آزمون یار" width="38" height="38" />
+        <span>آزمون یار</span>
+      </a>
+      <nav class="topnav">
+        <a href="#features">ویژگی‌ها</a>
+        <a href="#screens">تصاویر</a>
+        <a href="#articles">مقالات</a>
+        <a href="#faq">پرسش‌ها</a>
+        <a class="topnav-cta" href="https://myket.ir/app/com.driver_azmon" target="_blank" rel="noopener">دانلود رایگان</a>
+      </nav>
+    </div>
   </header>
 
   <main>
-    <div class="hero wrap">
-      <h1>آزمون <span>آیین‌نامه رانندگی ۱۴۰۵</span> را با آزمون یار بار اول قبول شوید</h1>
-      <p class="lead">
-        بیش از ۱٬۵۰۰ سوال از آزمون‌های سال‌های مختلف، ۳۰۰ سوال فنی، بخش تابلوها و تقویت حافظه،
-        شبیه‌ساز آزمون اصلی با ۳۰ سوال و ۲۰ دقیقه، کارنامه و نمودار پیشرفت.
-      </p>
-      <div class="badges">
-        <span>امتیاز <b>۴.۷</b> از ۵</span>
-        <span>·</span>
-        <span>بیش از <b>۷۰٬۰۰۰</b> دانلود</span>
-        <span>·</span>
-        <span>اندروید · رایگان</span>
-      </div>
-      <div class="btns">
-        <a class="btn btn-myket" href="https://myket.ir/app/com.driver_azmon" target="_blank" rel="noopener">دانلود از مایکت</a>
-        <!-- لینک کافه‌بازار را بعد از انتشار جایگزین کنید -->
-        <a class="btn btn-bazaar" href="https://cafebazaar.ir/app/com.driver_azmon" target="_blank" rel="noopener">دانلود از کافه‌بازار</a>
-        <a class="btn btn-ghost" id="deeplink" href="https://myket.ir/app/com.driver_azmon">باز کردن در اپ مایکت</a>
-      </div>
-    </div>
 
-    <section class="wrap">
-      <h2>چرا آزمون یار؟</h2>
-      <div class="grid">
-        <div class="card">
-          <h3>شبیه‌ساز آزمون واقعی</h3>
-          <p>هر آزمون ۳۰ سوال و ۲۰ دقیقه، دقیقاً مثل آزمون اصلی راهنمایی و رانندگی.</p>
+    <!-- ================= قهرمان ================= -->
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-grid">
+          <div>
+            <span class="pill">✦ به‌روز برای آزمون ۱۴۰۵</span>
+            <h1>آزمون <span>آیین‌نامه رانندگی</span> را بار اول قبول شوید</h1>
+            <p class="lead">
+              بیش از ۱٬۵۰۰ سوال از آزمون‌های سال‌های مختلف، ۳۰۰ سوال فنی، بخش تابلوها و
+              تقویت حافظه، شبیه‌ساز آزمون اصلی و کارنامهٔ پیشرفت — رایگان و آفلاین.
+            </p>
+            <div class="meta-row">
+              <span><span class="stars">★★★★★</span> <b>۴.۷ از ۵</b></span>
+              <span><b>+۷۰٬۰۰۰</b> دانلود</span>
+              <span>اندروید · رایگان</span>
+            </div>
+            <div class="btns">
+              <a class="btn btn-myket" href="https://myket.ir/app/com.driver_azmon" target="_blank" rel="noopener">دانلود از مایکت</a>
+              <a class="btn btn-bazaar" href="https://cafebazaar.ir/app/com.driver_azmon" target="_blank" rel="noopener">دانلود از کافه‌بازار</a>
+              <a class="btn btn-ghost" id="deeplink" href="https://myket.ir/app/com.driver_azmon">باز کردن در اپ</a>
+            </div>
+          </div>
+
+          <div class="phone">
+            <div class="screen">
+              <img src="https://myket.ir/asset-files/screenshots/xlarge/com.driver_azmon/972c1625-3f8f-4336-87da-6d82b131eb20.png" alt="نمای آزمون اصلی آیین‌نامه در اپ آزمون یار" width="640" height="1200" />
+            </div>
+          </div>
         </div>
-        <div class="card">
-          <h3>بانک بزرگ سوالات</h3>
-          <p>نزدیک به ۱۵۰۰ سوال از آزمون‌های سال‌های مختلف، به‌همراه ۳۰۰ سوال فنی تخصصی.</p>
-        </div>
-        <div class="card">
-          <h3>تابلو و تقویت حافظه</h3>
-          <p>تمرین حدس تابلوها و آموزش گروه‌بندی‌شده علائم، برای به‌خاطرسپاری سریع.</p>
-        </div>
-        <div class="card">
-          <h3>کارنامه و نمودار پیشرفت</h3>
-          <p>نتیجه‌ی هر آزمون با پاسخنامه، نمودار درصد پیشرفت و بررسی نقاط ضعف.</p>
-        </div>
-        <div class="card">
-          <h3>ویدیوهای آموزشی</h3>
-          <p>مجموعه‌ی آموزش‌های تصویری مفید برای بخش عملی رانندگی.</p>
-        </div>
-        <div class="card">
-          <h3>رایگان و بی‌دردسر</h3>
-          <p>شرکت نامحدود در آزمون‌ها، بدون هزینه و بدون نیاز به ثبت‌نام.</p>
+
+        <div class="stats">
+          <div class="stat"><b>+۱٬۵۰۰</b><span>سوال آزمون</span></div>
+          <div class="stat"><b>۳۰۰</b><span>سوال فنی</span></div>
+          <div class="stat"><b>۳۰ / ۲۰</b><span>سوال و دقیقه مثل آزمون اصلی</span></div>
+          <div class="stat"><b>۰ تومان</b><span>کاملاً رایگان</span></div>
         </div>
       </div>
     </section>
 
-    <section class="wrap">
-      <h2>نگاهی به محیط برنامه</h2>
-      <div class="shots">
-        <img loading="lazy" src="https://myket.ir/asset-files/screenshots/xlarge/com.driver_azmon/972c1625-3f8f-4336-87da-6d82b131eb20.png" alt="اسکرین‌شات آزمون اصلی آیین‌نامه" />
-        <img loading="lazy" src="https://myket.ir/asset-files/screenshots/xlarge/com.driver_azmon/220fd043-929d-435c-8b51-71ffff9db3ed.png" alt="اسکرین‌شات سوالات فنی آیین‌نامه" />
-        <img loading="lazy" src="https://myket.ir/asset-files/screenshots/xlarge/com.driver_azmon/929e07a6-fd85-43f3-992a-255c0791e3b5.png" alt="اسکرین‌شات کارنامه و نمودار پیشرفت" />
-      </div>
-    </section>
-
-    <section class="wrap">
-      <h2>راهنمای آزمون آیین‌نامه</h2>
-      <p style="color:var(--muted)">چند مقالهٔ کاربردی که پیش از آزمون واقعی به کارت می‌آید:</p>
-      <div class="grid">
-        <a class="card post" href="/blog/nemune-soalat-aeen-nameh-1405.html">
-          <h3>نمونه سوالات آیین‌نامه رانندگی ۱۴۰۵</h3>
-          <p>ساختار آزمون، الگوهای پرتکرار سؤال، روش درست تمرین و یک برنامهٔ یک‌هفته‌ای.</p>
-        </a>
-        <a class="card post" href="/blog/soalat-fanni-aeen-nameh.html">
-          <h3>سوالات فنی آیین‌نامه</h3>
-          <p>ترمز، موتور، تایر، باتری و معنی رنگ چراغ‌های هشدار داشبورد.</p>
-        </a>
-        <a class="card post" href="/blog/tablo-ha-ye-rahnamayi.html">
-          <h3>تابلوهای راهنمایی و رانندگی</h3>
-          <p>منطق شکل و رنگ، دسته‌بندی تابلوها و پرتکرارترین علائم آزمون.</p>
-        </a>
-        <a class="card post" href="/blog/ghabooli-azmoon-aeen-nameh.html">
-          <h3>قبولی بار اول در آزمون آیین‌نامه</h3>
-          <p>برنامهٔ مطالعه، تکنیک‌های تست‌زنی و مدیریت زمان در جلسهٔ آزمون.</p>
-        </a>
-      </div>
-    </section>
-
-    <section class="wrap faq">
-      <h2>پرسش‌های متداول</h2>
-      <details open>
-        <summary>سوالات آزمون آیین‌نامه در اپ به‌روز است؟</summary>
-        <p>بله، اپ شامل نزدیک به ۱۵۰۰ سوال از آزمون‌های سال‌های مختلف و حدود ۳۰۰ سوال فنی است و در نسخه‌های جدید به‌روزرسانی می‌شود.</p>
-      </details>
-      <details>
-        <summary>اپ رایگان است؟</summary>
-        <p>بله، آزمون یار رایگان است و از مایکت و کافه‌بازار قابل دانلود است.</p>
-      </details>
-      <details>
-        <summary>آیا با اپ می‌توانم بار اول قبول شوم؟</summary>
-        <p>اپ آزمون اصلی را شبیه‌سازی می‌کند: ۳۰ سوال در ۲۰ دقیقه، کارنامه و نمودار پیشرفت. تمرین مستمر شانس قبولی بار اول را بالا می‌برد.</p>
-      </details>
-    </section>
-
-    <div class="wrap">
-      <div class="cta">
-        <h2 style="text-align:center">همین حالا دانلود کنید</h2>
-        <p style="color:var(--muted);margin-bottom:18px">نسخه‌ی اندروید از مایکت و کافه‌بازار</p>
-        <div class="btns">
-          <a class="btn btn-myket" href="https://myket.ir/app/com.driver_azmon" target="_blank" rel="noopener">دریافت از مایکت</a>
-          <a class="btn btn-bazaar" href="https://cafebazaar.ir/app/com.driver_azmon" target="_blank" rel="noopener">دریافت از کافه‌بازار</a>
+    <!-- ================= ویژگی‌ها ================= -->
+    <section class="block" id="features">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>چرا آزمون یار؟</h2>
+          <p>هر چیزی که برای قبولی در آزمون کتبی لازم داری، در یک اپ.</p>
+        </div>
+        <div class="grid">
+          <div class="card">
+            <div class="ico">⏱️</div>
+            <h3>شبیه‌ساز آزمون واقعی</h3>
+            <p>هر آزمون ۳۰ سوال و ۲۰ دقیقه، دقیقاً مثل آزمون اصلی راهنمایی و رانندگی.</p>
+          </div>
+          <div class="card">
+            <div class="ico">📚</div>
+            <h3>بانک بزرگ سوالات</h3>
+            <p>نزدیک به ۱۵۰۰ سوال از آزمون‌های سال‌های مختلف، به‌همراه ۳۰۰ سوال فنی تخصصی.</p>
+          </div>
+          <div class="card">
+            <div class="ico">🚸</div>
+            <h3>تابلو و تقویت حافظه</h3>
+            <p>تمرین حدس تابلوها و آموزش گروه‌بندی‌شدهٔ علائم، برای به‌خاطرسپاری سریع.</p>
+          </div>
+          <div class="card">
+            <div class="ico">📈</div>
+            <h3>کارنامه و نمودار پیشرفت</h3>
+            <p>نتیجهٔ هر آزمون با پاسخنامه، نمودار درصد پیشرفت و بررسی نقاط ضعف.</p>
+          </div>
+          <div class="card">
+            <div class="ico">🎬</div>
+            <h3>ویدیوهای آموزشی</h3>
+            <p>مجموعهٔ آموزش‌های تصویری مفید برای بخش عملی رانندگی.</p>
+          </div>
+          <div class="card">
+            <div class="ico">🎁</div>
+            <h3>رایگان و بی‌دردسر</h3>
+            <p>شرکت نامحدود در آزمون‌ها، بدون هزینه و بدون نیاز به ثبت‌نام.</p>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
+
+    <!-- ================= تصاویر ================= -->
+    <section class="block" id="screens">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>نگاهی به محیط برنامه</h2>
+          <p>آزمون، سوالات فنی و کارنامهٔ پیشرفت — همه در یک جا.</p>
+        </div>
+        <div class="shots">
+          <img loading="lazy" src="https://myket.ir/asset-files/screenshots/xlarge/com.driver_azmon/972c1625-3f8f-4336-87da-6d82b131eb20.png" alt="اسکرین‌شات آزمون اصلی آیین‌نامه" width="640" height="1200" />
+          <img loading="lazy" src="https://myket.ir/asset-files/screenshots/xlarge/com.driver_azmon/220fd043-929d-435c-8b51-71ffff9db3ed.png" alt="اسکرین‌شات سوالات فنی آیین‌نامه" width="640" height="1200" />
+          <img loading="lazy" src="https://myket.ir/asset-files/screenshots/xlarge/com.driver_azmon/929e07a6-fd85-43f3-992a-255c0791e3b5.png" alt="اسکرین‌شات کارنامه و نمودار پیشرفت" width="640" height="1200" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= مقالات ================= -->
+    <section class="block" id="articles">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>راهنمای آزمون آیین‌نامه</h2>
+          <p>چند مقالهٔ کاربردی که پیش از آزمون واقعی به کارت می‌آید.</p>
+        </div>
+        <div class="grid">
+          <a class="card" href="blog/nemune-soalat-aeen-nameh-1405.html">
+            <div class="ico">📝</div>
+            <h3>نمونه سوالات آیین‌نامه ۱۴۰۵</h3>
+            <p>ساختار آزمون، الگوهای پرتکرار سؤال، روش درست تمرین و یک برنامهٔ یک‌هفته‌ای.</p>
+            <span class="post-more">ادامهٔ مطلب ←</span>
+          </a>
+          <a class="card" href="blog/soalat-fanni-aeen-nameh.html">
+            <div class="ico">🔧</div>
+            <h3>سوالات فنی آیین‌نامه</h3>
+            <p>ترمز، موتور، تایر، باتری و معنی رنگ چراغ‌های هشدار داشبورد.</p>
+            <span class="post-more">ادامهٔ مطلب ←</span>
+          </a>
+          <a class="card" href="blog/tablo-ha-ye-rahnamayi.html">
+            <div class="ico">🚧</div>
+            <h3>تابلوهای راهنمایی و رانندگی</h3>
+            <p>منطق شکل و رنگ، دسته‌بندی تابلوها و پرتکرارترین علائم آزمون.</p>
+            <span class="post-more">ادامهٔ مطلب ←</span>
+          </a>
+          <a class="card" href="blog/ghabooli-azmoon-aeen-nameh.html">
+            <div class="ico">🎯</div>
+            <h3>قبولی بار اول در آزمون</h3>
+            <p>برنامهٔ مطالعه، تکنیک‌های تست‌زنی و مدیریت زمان در جلسهٔ آزمون.</p>
+            <span class="post-more">ادامهٔ مطلب ←</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= پرسش‌های متداول ================= -->
+    <section class="block faq" id="faq">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>پرسش‌های متداول</h2>
+          <p>چیزهایی که بیشتر از همه پرسیده می‌شود.</p>
+        </div>
+        <details open>
+          <summary>سوالات آزمون آیین‌نامه در اپ به‌روز است؟</summary>
+          <p>بله، اپ شامل نزدیک به ۱۵۰۰ سوال از آزمون‌های سال‌های مختلف و حدود ۳۰۰ سوال فنی است و در نسخه‌های جدید به‌روزرسانی می‌شود.</p>
+        </details>
+        <details>
+          <summary>اپ رایگان است؟</summary>
+          <p>بله، آزمون یار رایگان است و از مایکت و کافه‌بازار قابل دانلود است. برای استفادهٔ کامل نیازی به پرداخت یا ثبت‌نام نیست.</p>
+        </details>
+        <details>
+          <summary>آیا با اپ می‌توانم بار اول قبول شوم؟</summary>
+          <p>اپ آزمون اصلی را شبیه‌سازی می‌کند: ۳۰ سوال در ۲۰ دقیقه، کارنامه و نمودار پیشرفت. تمرین مستمر شانس قبولی بار اول را بالا می‌برد.</p>
+        </details>
+        <details>
+          <summary>آفلاین هم کار می‌کند؟</summary>
+          <p>بله، بخش تمرین و آزمون‌ها آفلاین قابل استفاده است؛ بنابراین در اتوبوس یا جایی که اینترنت ضعیف است هم می‌توانی تمرین کنی.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- ================= فراخوان ================= -->
+    <section class="block">
+      <div class="wrap">
+        <div class="cta">
+          <h2>همین حالا شروع کن</h2>
+          <p>نسخهٔ اندروید از مایکت و کافه‌بازار — رایگان.</p>
+          <div class="btns">
+            <a class="btn btn-myket" href="https://myket.ir/app/com.driver_azmon" target="_blank" rel="noopener">دریافت از مایکت</a>
+            <a class="btn btn-bazaar" href="https://cafebazaar.ir/app/com.driver_azmon" target="_blank" rel="noopener">دریافت از کافه‌بازار</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
 
-  <footer class="wrap">
-    <p>آزمون یار — مدیریت و تمرین آزمون آیین‌نامه رانندگی ۱۴۰۵ · سازنده: اندروید پلاس</p>
-    <p>آزمون یار · <a href="https://myket.ir/app/com.driver_azmon" rel="noopener">صفحه‌ی مایکت</a> · <a href="https://cafebazaar.ir/app/com.driver_azmon" rel="noopener">صفحه‌ی کافه‌بازار</a></p>
+  <footer class="site">
+    <div class="wrap cols">
+      <div>
+        <h4>آزمون یار</h4>
+        <p>اپلیکیشن آموزش و تمرین آزمون آیین‌نامه رانندگی ۱۴۰۵؛ ساختهٔ «اندروید پلاس».</p>
+      </div>
+      <div>
+        <h4>لینک‌ها</h4>
+        <ul>
+          <li><a href="#features">ویژگی‌های اپ</a></li>
+          <li><a href="#articles">مقالات آموزشی</a></li>
+          <li><a href="#faq">پرسش‌های متداول</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>دانلود</h4>
+        <ul>
+          <li><a href="https://myket.ir/app/com.driver_azmon" rel="noopener">صفحهٔ مایکت</a></li>
+          <li><a href="https://cafebazaar.ir/app/com.driver_azmon" rel="noopener">صفحهٔ کافه‌بازار</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="wrap copy">
+      <p>© آزمون یار · همهٔ حقوق محفوظ است.</p>
+    </div>
   </footer>
 
   <script>
-    // اگر کاربر موبایل اندروید است، دکمه‌ی اصلی مستقیم اپ مایکت را باز کند
+    // روی موبایل اندروید، دکمهٔ «باز کردن در اپ» مستقیم اپ مایکت را باز کند
     (function () {
       var ua = navigator.userAgent || "";
-      var isAndroid = /android/i.test(ua);
-      var dl = document.getElementById("deeplink");
-      if (isAndroid) {
-        dl.setAttribute("href", "myket://details?id=com.driver_azmon");
+      if (/android/i.test(ua)) {
+        var dl = document.getElementById("deeplink");
+        if (dl) dl.setAttribute("href", "myket://details?id=com.driver_azmon");
       }
     })();
   </script>
