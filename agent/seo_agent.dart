@@ -402,7 +402,7 @@ String buildPrompt(String keyword, String brand) => '''
 Future<void> taskGenerate(Agent a) async {
   final kw = loadKeywords();
   final articles = (kw['articles'] as List).cast<dynamic>();
-  final todo = articles.where((e) => (e as Map)['status'] == 'todo' || (e as Map)['status'] == null).toList();
+  final todo = articles.where((e) => e?['status'] == 'todo' || e?['status'] == null).toList();
   if (todo.isEmpty) {
     step('مقاله‌ای در صف نیست.');
     return;

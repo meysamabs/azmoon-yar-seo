@@ -1,0 +1,22 @@
+═══════════════════════════════════════════════════
+  لینک سایت — آزمون یار (سئو و دانلود آزمون آیین‌نامه)
+═══════════════════════════════════════════════════
+
+🌐 سایت لایو (GitHub Pages):
+   https://meysamabs.github.io/azmoon-yar-seo/
+
+📦 مخزن عمومی (سورس پروژه):
+   https://github.com/meysamabs/azmoon-yar-seo
+
+🛍️ صفحه‌های دانلود اپ:
+   مایکت:        https://myket.ir/app/com.driver_azmon
+   کافه‌بازار:   https://cafebazaar.ir/app/com.driver_azmon
+
+🤖 به‌روزرسانی خودکار:
+   • GitHub Actions: هر ۳ ساعت (ابری، رایگان، بدون نیاز به کامپیوتر)
+   • Task Scheduler ویندوز (AzmoonYarSEOAgent): هر ۳ ساعت
+   • IndexNow: بعد از هر اجرا برای ایندکس سریع بینگ/یاندکس
+
+📄 این فایل را در همان پوشهٔ پروژه نگه دار؛ ویرایش سایت:
+   └─ repos:  C:\Users\Administrator\Desktop\azmoon-yar-seo
+═══════════════════════════════════════════════════
