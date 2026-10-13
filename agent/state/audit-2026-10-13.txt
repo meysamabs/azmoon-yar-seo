@@ -1,2 +1,0 @@
-404.html — طول meta description مناسب نیست (0)
-404.html — تگ canonical ندارد
