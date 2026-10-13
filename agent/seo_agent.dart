@@ -259,6 +259,11 @@ String articleHtml(Agent a, Map<String, dynamic> art, String body, {required boo
   final myket = htmlEscape(a.app.myket);
   final bazaar = htmlEscape(a.app.bazaar);
 
+  final gen = art['generated_at']?.toString() ?? '';
+  final pubDate = gen.length >= 10
+      ? gen.substring(0, 10)
+      : DateTime.now().toUtc().toIso8601String().substring(0, 10);
+
   final jsonLd = const JsonEncoder.withIndent('  ').convert({
     '@context': 'https://schema.org',
     '@type': 'Article',
@@ -266,6 +271,8 @@ String articleHtml(Agent a, Map<String, dynamic> art, String body, {required boo
     'description': desc,
     'inLanguage': 'fa',
     'mainEntityOfPage': url,
+    'datePublished': pubDate,
+    'dateModified': pubDate,
     'author': {'@type': 'Organization', 'name': a.app.developer},
     'publisher': {'@type': 'Organization', 'name': a.site.brand},
   });
@@ -457,12 +464,30 @@ void taskBuild(Agent a) {
     urls.add(a.absUrl('${a.site.blogDir}/${art['slug']}.html'));
   }
 
+  // آخرین تاریخ به‌روزرسانی هر صفحه (lastmod) — گوگل تازگی محتوا را می‌فهمد.
+  String lastmod(String rel) {
+    try {
+      final s = File(a.pagePath(rel)).lastModifiedSync().toUtc().toIso8601String();
+      return s.substring(0, 10);
+    } catch (_) {
+      return '';
+    }
+  }
+
+  final lmByUrl = <String, String>{a.absUrl(''): lastmod('index.html')};
+  for (final art in publishedArticles()) {
+    lmByUrl[a.absUrl('${a.site.blogDir}/${art['slug']}.html')] =
+        lastmod('${a.site.blogDir}/${art['slug']}.html');
+  }
+
   final buf = StringBuffer();
   buf.writeln('<?xml version="1.0" encoding="UTF-8"?>');
   buf.writeln('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">');
   for (final u in urls) {
     buf.writeln('  <url>');
     buf.writeln('    <loc>${htmlEscape(u)}</loc>');
+    final lm = lmByUrl[u];
+    if (lm != null && lm.isNotEmpty) buf.writeln('    <lastmod>$lm</lastmod>');
     buf.writeln('    <changefreq>weekly</changefreq>');
     buf.writeln('    <priority>${u == a.absUrl('') ? '1.0' : '0.8'}</priority>');
     buf.writeln('  </url>');

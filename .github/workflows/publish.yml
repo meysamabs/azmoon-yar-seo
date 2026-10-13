@@ -2,7 +2,7 @@ name: انتشار خودکار سایت + ایجنت سئو
 
 on:
   schedule:
-    - cron: '0 4 * * *'      # هر روز ۰۷:۳۰ تهران
+    - cron: '0 */3 * * *'    # هر ۳ ساعت (۰۳:۰۰، ۰۶:۰۰، ... به وقت UTC)
   push:
     branches: [ main, master ]
   workflow_dispatch: {}
