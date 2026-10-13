@@ -1,4 +1,4 @@
-{
+﻿{
   "site": {
     "domain": "https://meysamabs.github.io/azmoon-yar-seo",
     "brand": "آزمون یار",
@@ -8,7 +8,7 @@
   "app": {
     "package": "com.driver_azmon",
     "myket": "https://myket.ir/app/com.driver_azmon",
-    "bazaar": "",
+    "bazaar": "https://cafebazaar.ir/app/com.driver_azmon",
     "developer": "اندروید پلاس"
   },
   "llm": {
@@ -27,9 +27,10 @@
     "report": true
   },
   "limits": {
-    "articles_per_run": 1,
+    "articles_per_run": 2,
     "outreach_per_run": 3
   },
-  "dry_run": true,
+  "indexnow_key": "85ae073cbcc4e94ccf23a1e47ea9478b",
+  "dry_run": false,
   "auto_publish": false
 }

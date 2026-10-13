@@ -360,11 +360,18 @@ Future<void> taskGenerate(Agent a) async {
     final keyword = art['keyword'].toString();
     final slug = art['slug'].toString();
 
-    String? body = useLlm ? await callLlm(a, buildPrompt(keyword, a.site.brand)) : null;
-    final generated = body != null;
+    // اگر برای این مقاله یک بدنهٔ دست‌نویس در agent/content/<slug>.html باشد،
+    // همان استفاده می‌شود (کیفیت بالاتر از قالب و از LLMِ بدون تنظیم دقیق).
+    final localFile = File('$_agentDir/content/$slug.html');
+    final fromFile = localFile.existsSync();
+
+    String? body = fromFile ? localFile.readAsStringSync() : null;
+    if (body == null && useLlm) body = await callLlm(a, buildPrompt(keyword, a.site.brand));
+    final fromLlm = body != null && !fromFile;
     body ??= fallbackBody(keyword);
 
-    final published = generated && a.autoPublish;
+    // مقالهٔ دست‌نویس مستقیماً منتشر می‌شود؛ مقالهٔ LLM فقط با auto_publish.
+    final published = fromFile || (fromLlm && a.autoPublish);
     writeText(a.pagePath('${a.site.blogDir}/$slug.html'),
         articleHtml(a, art, body, published: published));
 
@@ -456,6 +463,8 @@ void taskAudit(Agent a) {
       .listSync(recursive: true)
       .whereType<File>()
       .where((f) => f.path.endsWith('.html'))
+      // فایل‌های محتوای ایجنت، قطعهٔ HTML هستند نه صفحهٔ کامل؛ بررسی نمی‌شوند.
+      .where((f) => !f.path.replaceAll('\\', '/').contains('/content/'))
       .toList();
 
   final issues = <String>[];
@@ -502,8 +511,9 @@ Future<void> taskIndex(Agent a) async {
     urls.add(a.absUrl('${a.site.blogDir}/${art['slug']}.html'));
   }
 
-  final key = env('INDEXNOW_KEY');
-  if (key != null) {
+  // کلید IndexNow عمومی است (در /KEY.txt منتشر می‌شود)، پس از env یا config خوانده می‌شود.
+  final key = env('INDEXNOW_KEY') ?? a.cfg['indexnow_key']?.toString();
+  if (key != null && key.isNotEmpty) {
     writeText(a.pagePath('$key.txt'), key);
     if (a.dryRun) {
       step('DRY-RUN: IndexNow ارسال نشد (${urls.length} آدرس).');
